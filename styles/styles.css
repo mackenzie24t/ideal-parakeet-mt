@@ -1,0 +1,60 @@
+body 
+{
+  background-color: #F6EFFB;
+}
+
+.col-md-12 {
+  text-align: center;
+}
+
+.row {
+  /* center cards */
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: left;
+  font-size: 24;
+}
+
+.card:hover {
+  /* cards casts a shadow when the 
+     mouse hovers over them */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+  }
+  
+#message p {
+  padding: 5px 5px;
+  font-size: 14px;
+}
+
+  /* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+  }
+  
+.valid:before {
+  position: relative;
+  left: -35px;
+  /* content: "&#10004;"; */
+}
+  
+/* Add a red text color and an "x" icon when the requirements are wrong */
+  .invalid {
+  color: red;
+}
+  
+.invalid:before {
+  position: relative;
+  left: -35px;
+  /* content: "&#10006;"; */
+}

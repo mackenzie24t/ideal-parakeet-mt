@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar that displays important links -->
+    <nav class="navbar navbar-expand-sm" style="background-color: #D3B2EB;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://codepen.io/mackenzie24t" target="blank"> Codepen <i class="bi bi-box"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/mackenzie24t" target="blank"> Github Identity <i class="bi bi-github"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/mackenzie24t?tab=repositories" target="blank"> Projects <i class="bi bi-journal-code"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header text -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Create an account</h2>
+            <h3>to see my prized posession</h3>
+        </div>
+    </div>
+
+    <!-- First card aligned in center of page -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card m-3 d-flex justify-content-center align-items-center">
+                <div class="card-body">
+                    <form class="bs5Form" method="get">
+
+                        <!-- First half of form gathers account info -->
+                        <label for="fname">First name:</label><br>
+                        <input type="text" id="fname" name="fname" required><br>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+
+                        <label for="lname">Last name:</label><br>
+                        <input type="text" id="lname" name="lname" required><br><br>
+
+                        <label for="email">Enter your email:</label><br>
+                        <input type="email" id="email" name="email" required><br>
+
+                        <label for="username">Username:</label><br>
+                        <input type="text" id="username" name="username" required><br>
+
+                        <!-- Password input uses a pattern to set password criteria -->
+                        <label for="pwd">Password:</label><br>
+                        <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br><br>
+                    </form>
+
+                    <!-- Message to display password criteria to the user -->
+                    <div id="message">
+                        <h5>Password must contain the following:</h5>
+                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                        <p id="number" class="invalid">A <b>number</b></p>
+                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <!-- Second card aligned center of page -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card m-3 d-flex justify-content-center align-items-center">
+                <div class="card-body">
+                    <form class="bs5Form" method="get">
+
+                        <!-- Second half of form gathers fun info -->
+                        <label>Select your favorite color:</label><br>
+                        <input type="color" id="favcolor" name="favcolor" value="#ff0000"><br>
+
+                        <label for="birthday">Enter your birthday:</label><br>
+                        <input type="date" id="birthday" name="birthday" required><br><br>
+
+                        <label>Is this sign-up too personal?</label><br>
+                        <input type="radio" id="yes" name="personal" value="yes">
+                        <label for="yes">yes</label><br>
+                        <input type="radio" id="no" name="personal" value="no">
+                        <label for="no">no</label><br><br>
+
+                        <!-- response hidden until yes button is clicked -->
+                        <div class="yesResponse" style="display: none;">
+                            <p>Too bad</p>
+                        </div>
+                        
+                        <label>What was your first pet?</label><br>
+                        <input type="checkbox" id="pet1" name="firstPet" value="Dog">
+                        <label for="pet1">dog</label><br>
+                        <input type="checkbox" id="pet2" name="firstPet" value="Cat">
+                        <label for="pet2">cat</label><br>
+                        <input type="checkbox" id="pet3" name="firstPet" value="Fish">
+                        <label for="pet3">fish</label><br>
+                        <input type="checkbox" id="pet4" name="firstPet" value="Hampster">
+                        <label for="pet4">hampster</label><br>
+                        <input type="checkbox" id="pet5" name="firstPet" value="None">
+                        <label for="pet5">none</label><br>
+                        <input type="checkbox" id="pet6" name="firstPet" value="Other">
+                        <label for="pet6">other:</label>
+                        <input type="text" id="otherPet6" name="firstPet" style="display: none;"><br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Submit button and load profile button -->  
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" id="submitButton" class="btn btn-primary" value="submit">
+            <button id="loadProfile" class="btn btn-primary">load profile</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">My Prized Posession:</h4>
+                    <h6 class="modal-title">Cheezer the beanie baby</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <img src="https://i5.walmartimages.com/seo/Ty-Beanie-Baby-Cheezer-the-Mouse-Stuffed-Animal-MWMT_38769779-fc1c-41bc-851b-28557c6ba5a2.dd1423c7ead61988a28fa57b8f3c45be.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="Cheezer the rat beanie baby" style="width: 100%;"> 
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- create a footer that has a background color and a centered link to a page validator -->
+    <footer class="bg-body-tertiary text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: #D3B2EB;">
+            <a class="text-body" href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fmackenzie24t.github.io%2Fhotel-india-musical-octo-lamp%2F" target="blank">Check this page's validity</a>
+        </div>
+    </footer>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script  src="scripts/scripts.js"></script>
+</body>
+</html>
