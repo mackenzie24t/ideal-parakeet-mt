@@ -1,3 +1,120 @@
-<h1>is my ejs page</h1>
-<br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll For Sandwich</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <h2>Welcome to Roll For Sandwich!</h2>
+    <p>This webpage is inspired by the<a
+            href="https://www.youtube.com/watch?v=1rEdsC7cQpA&list=PLVGj_Q5o2JXW2mUORElnXHOt33kfZhllS" target="_blank">
+            Roll For Sandwich series on TikTok and YouTube</a></p>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Bread</h5>
+                    <div class="form-group">
+                        <form method="POST" action="/update/<%= postData[i]._id %>">
+                            <label for="bread">Enter your bread options and submit after each item: </label>
+                            <input type="text" class="form-control" id="bread">
+                            <input type="submit" value="add"> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Main</h5>
+                    <div class="form-group">
+                        <label for="main">Enter your protein options and submit after each item: </label>
+                        <input type="text" class="form-control" id="main">
+                        <button type="button" class="btn" id="mn_btn">Add option</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Roughage</h5>
+                    <div class="form-group">
+                        <label for="roughage">Enter your veggie options and submit after each item: </label>
+                        <input type="text" class="form-control" id="roughage">
+                        <button type="button" class="btn" id="rg_btn">Add option</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Wild Magic</h5>
+                    <div class="form-group">
+                        <label for="wild_magic">Enter your extra/misc. options and submit after each item: </label>
+                        <input type="text" class="form-control" id="wild_magic">
+                        <button type="button" class="btn" id="wm_btn">Add option</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title">Sauce</h5>
+                    <div class="form-group">
+                        <label for="sauce">Enter your sauce options and submit after each item: </label>
+                        <input type="text" class="form-control" id="sauce">
+                        <button type="button" class="btn" id="sc_btn">Add option</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <h5 class="card-title">good luck!</h5>
+                <h5 class="card-title">have fun :)</h5>
+                <div class="card-body">
+                    <button type="button" class="btn" id="roll_btn">Roll for Sandwich!</button>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script src="scripts/scripts.js"></script>
+</body>
+
+</html>
+
 <%=myServerVariable %>
