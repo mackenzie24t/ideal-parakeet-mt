@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
 const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const PORT = process.env.PORT || 3000;
 const uri = `mongodb+srv://macthompson2002:${process.env.MONGO_PWD}@cluster0.4x7x5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`; 
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -47,7 +48,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/ejs', (req,res)=>{
-``
+
   res.render('index', {
     myServerVariable : "something from server"
   });
@@ -77,15 +78,16 @@ app.post('/insert', async (req,res)=> {
 
   console.log('in /insert');
   console.log('request', req.body);
-  console.log('request', req.body.newPost);
+  // console.log('request', req.id);
+  console.log('request', req.body.bread);
 
   //connect to db,
   await client.connect();
   //point to the collection 
-  await client.db("sandwich").collection("ingredient").insertOne({ bread: req.name});
+  await client.db("sandwich").collection("ingredient").insertOne({ bread: req.body});
   // await client.db("mackenzies-db").collection("cool-collection").insertOne({ iJustMadeThisUp: 'hardcoded new key '});  
   //insert into it
-  res.redirect('/read');
+  // res.redirect('/read');
 
 }); 
 
@@ -109,4 +111,6 @@ app.post('/update/:id', async (req,res)=>{
 
 });
 
-app.listen(5500)
+app.listen(PORT, () => {
+  console.log(`Server is running & listening on port ${PORT}`);
+});
