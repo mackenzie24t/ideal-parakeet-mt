@@ -24,19 +24,19 @@ const client = new MongoClient(uri, {
   }
 });
 
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 // function whateverNameOfIt (params) {}
 // ()=>{}
@@ -63,7 +63,7 @@ app.get('/read', async (req,res)=>{
   console.log('connected?');
   // Send a ping to confirm a successful connection
   
-  let result = await client.db("mackenzies-db").collection("cool-collection")
+  let result = await client.db("sandwich").collection("ingredient")
     .find({}).toArray(); 
   console.log(result); 
 
@@ -71,20 +71,21 @@ app.get('/read', async (req,res)=>{
     postData : result
   });
 
-})
+});
 
 app.post('/insert', async (req,res)=> {
 
   console.log('in /insert');
   console.log('request', req.body);
   console.log('request', req.body.newPost);
+
   //connect to db,
   await client.connect();
   //point to the collection 
-  await client.db("mackenzies-db").collection("cool-collection").insertOne({ post: req.body.newPost});
+  await client.db("sandwich").collection("ingredient").insertOne({ bread: req.name});
   // await client.db("mackenzies-db").collection("cool-collection").insertOne({ iJustMadeThisUp: 'hardcoded new key '});  
   //insert into it
-  res.render('/read');
+  res.redirect('/read');
 
 }); 
 

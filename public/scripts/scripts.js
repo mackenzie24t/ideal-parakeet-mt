@@ -23,11 +23,9 @@ $(document).ready(function (){
     $("#br_btn").on("click", function (event) {
         console.log("bread entered");
 
-        
-
-        // bList[a] = newBread;
-        // a++;
-        // document.getElementById("bread").value = "";
+        bList[a] = newBread;
+        a++;
+        document.getElementById("bread").value = "";
     });
 
     $("#mn_btn").on("click", function (event) {

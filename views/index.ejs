@@ -32,9 +32,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Bread</h5>
                     <div class="form-group">
-                        <form method="POST" action="/update/<%= postData[i]._id %>">
+                        <form method="POST" action="/insert/">
                             <label for="bread">Enter your bread options and submit after each item: </label>
-                            <input type="text" class="form-control" id="bread">
+                            <input type="text" class="form-control" id="bread" name="bread">
                             <input type="submit" value="add"> 
                         </form>
                     </div>
