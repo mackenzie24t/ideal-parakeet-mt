@@ -76,18 +76,18 @@ app.get('/read', async (req,res)=>{
 
 app.post('/insert', async (req,res)=> {
 
-  console.log('in /insert');
   console.log('request', req.body);
-  // console.log('request', req.id);
-  console.log('request', req.body.bread);
+  
+  let userReq = String(req.body);
+  let field = userReq.match(/bread|main|roughage|wild_magic|sauce/)
 
   //connect to db,
   await client.connect();
   //point to the collection 
-  await client.db("sandwich").collection("ingredient").insertOne({ bread: req.body});
+  await client.db("sandwich").collection("ingredient").insertOne({ field: req.body});
   // await client.db("mackenzies-db").collection("cool-collection").insertOne({ iJustMadeThisUp: 'hardcoded new key '});  
   //insert into it
-  // res.redirect('/read');
+  res.redirect('/ejs');
 
 }); 
 
@@ -110,6 +110,7 @@ app.post('/update/:id', async (req,res)=>{
 
 
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server is running & listening on port ${PORT}`);
