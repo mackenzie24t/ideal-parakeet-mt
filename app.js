@@ -42,37 +42,18 @@ run().catch(console.dir);
 // function whateverNameOfIt (params) {}
 // ()=>{}
 
-app.get('/', function (req, res) {
+app.get('/', async function (req, res) {
   // res.send('Hello Node from Ex on local dev box')
-  res.sendFile('index.ejs');
-})
-
-app.get('/ejs', (req,res)=>{
-
-  res.render('index', {
-    myServerVariable : "something from server"
-  });
-
-  //can you get content from client...to console? 
-})
-
-app.get('/read', async (req,res)=>{
-
-  console.log('in /read');
   await client.connect();
-  
-  console.log('connected?');
-  // Send a ping to confirm a successful connection
-  
+
   let result = await client.db("sandwich").collection("ingredient")
-    .find({}).toArray(); 
+  .find({}).toArray(); 
   console.log(result); 
 
-  res.render('read', {
-    postData : result
+  res.render('index', {
+    ingData : result
   });
-
-});
+})
 
 app.post('/insert', async (req,res)=> {
 
@@ -87,27 +68,38 @@ app.post('/insert', async (req,res)=> {
   await client.db("sandwich").collection("ingredient").insertOne({ field: req.body});
   // await client.db("mackenzies-db").collection("cool-collection").insertOne({ iJustMadeThisUp: 'hardcoded new key '});  
   //insert into it
-  res.redirect('/ejs');
+  res.redirect('/');
 
 }); 
 
-app.post('/update/:id', async (req,res)=>{
+app.post('/update', async (req,res)=>{
 
   console.log("req.parms.id: ", req.params.id)
+  let userReq = String(req.body);
+  let field = userReq.match(/bread|main|roughage|wild_magic|sauce/)
 
   client.connect; 
-  const collection = client.db("mackenzies-db").collection("cool-collection");
+  const collection = client.db("sandwich").collection("ingredient");
   let result = await collection.findOneAndUpdate( 
-  {"_id": new ObjectId(req.params.id)}, { $set: {"post": "NEW POST" } }
+  {"_id": new ObjectId(req.body.ingID)}, { $set: {field : req.body.inputUpdateIngredient } }
   )
   .then(result => {
     console.log(result); 
-    res.redirect('/read');
-  });
- 
-  //insert into it
- 
+    res.redirect('/');
+  })
 
+});
+
+app.post('/delete/:id', async (req,res)=>{
+
+  console.log("in delete, req.parms.id: ", req.params.id)
+
+  client.connect; 
+  const collection = client.db("sandwich").collection("ingredient");
+  let result = await collection.findOneAndDelete( 
+  {"_id": new ObjectId(req.params.id)}).then(result => {
+  console.log(result); 
+  res.redirect('/');})
 
 });
 
