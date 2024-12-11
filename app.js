@@ -22,14 +22,24 @@ console.log(uri);
 console.log('im on a node server change that and that');
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
+let client;
+(async () => {
+    client = new MongoClient(uri, {
+        serverApi: {
+            version: ServerApiVersion.v1,
+            strict: true,
+            deprecationErrors: true,
+        },
+    });
 
+    try {
+        await client.connect();
+        console.log("Connected to MongoDB successfully!");
+    } catch (error) {
+        console.error("Failed to connect to MongoDB", error);
+        process.exit(1);
+    }
+})();
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
