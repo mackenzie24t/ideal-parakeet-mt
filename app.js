@@ -1,16 +1,21 @@
-require('dotenv').config()
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const { urlencoded } = require('body-parser')
-const { ObjectId } = require('mongodb')
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const PORT = process.env.PORT || 3000;
-const uri = `mongodb+srv://macthompson2002:${process.env.MONGO_PWD}@cluster0.4x7x5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`; 
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const path = require('path');
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.set('view engine', 'ejs')
-app.use(express.static('./public/'))
+const app = express();
+const PORT = process.env.PORT || 3000;
+const uri = `mongodb+srv://macthompson2002:${process.env.MONGO_PWD}@cluster0.4x7x5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+
+if (!process.env.MONGO_PWD) {
+    throw new Error("Missing environment variable: MONGO_PWD");
+}
+
+// Middleware setup
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
 
 console.log(uri);
 
